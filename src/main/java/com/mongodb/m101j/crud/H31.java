@@ -31,6 +31,9 @@ public class H31 {
         MongoDatabase db = client.getDatabase("school");
         MongoCollection<Document> coll = db.getCollection("students");
         
+        //aggregation MongoDB shell query
+        //db.students.aggregate([{"$unwind":"$scores"},{"$match":{"scores.type":"homework"}},{"$group":{"_id":"$_id","minitem":{"$min":"$scores.score"}}}])
+
         //unwind
         Document unwind = new Document("$unwind", "$scores");
         //match
